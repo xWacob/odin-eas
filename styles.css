@@ -1,0 +1,15 @@
+#squares-container{
+    display: flex;
+    flex-direction: column;
+}
+
+.row{
+    display: flex;
+
+}
+
+.tile{
+    width: 100px;
+    height: 100px;
+    border: solid black;
+}
