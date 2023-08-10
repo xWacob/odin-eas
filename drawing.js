@@ -12,6 +12,8 @@ let grid_size = 4;
 // ********************** Main function area ***************************
 
 createGrid();
+document.getElementsByClassName("tile").addEventListener("onmouseover", changeToBlack());
+document.getElementsByClassName("tile").addEventListener("onmouseover", changeToWhite());
 
 // *********************************************************************
 
@@ -34,7 +36,14 @@ function createGrid()
     }
 }
 
+// changes the tiles to black when hovered over
 function changeToBlack()
+{
+
+}
+
+// changes the tiles to white when hovered over
+function changeToWhite()
 {
 
 }
