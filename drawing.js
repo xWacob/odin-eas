@@ -7,13 +7,20 @@
 
 // **************** Global Vars ****************************************
 
-let grid_size = 4;
+let grid_size = 16;
 
 // ********************** Main function area ***************************
 
 createGrid();
-document.getElementsByClassName("tile").addEventListener("onmouseover", changeToBlack());
-document.getElementsByClassName("tile").addEventListener("onmouseover", changeToWhite());
+const tileArr = document.getElementsByClassName("tile");
+for (let i = 0; i < tileArr.length; i++)
+{
+    Object.values(tileArr)[i].addEventListener("mouseenter", e => {
+        Object.values(tileArr)[i].style.backgroundColor = "black";
+    })
+}
+
+
 
 // *********************************************************************
 
@@ -34,16 +41,4 @@ function createGrid()
             rows.appendChild(tile);
         }
     }
-}
-
-// changes the tiles to black when hovered over
-function changeToBlack()
-{
-
-}
-
-// changes the tiles to white when hovered over
-function changeToWhite()
-{
-
 }
