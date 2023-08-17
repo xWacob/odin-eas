@@ -13,56 +13,77 @@ let gridCreated = 1; // 1 means no grid, 0 means grid created
 // ********************** Main function area ***************************
 
 
-const tileArr = document.getElementsByClassName("tile");
+const tileArr = [];
+const rowsArr = [];
 const coloredArr = [];
 const cursorArr = [];
+const tileColor = [];
 
 
 if (gridCreated == 1) // create grid and array to see if tile has been entered
 {
+    let currTile;
     createGrid();
-    for (let i = 0; i < tileArr.length; i++)
+
+    for (let i = 0; i < grid_size; i++)
     {
-        coloredArr.push(false);
-        cursorArr.push(false);
+        rowsArr.push(i);
+    }
+
+    for (let i = 0; i < grid_size; i++)
+    {
+        for (let j = 0; j < grid_size; j++)
+        {
+            coloredArr.push(false);
+            tileColor.push("white");
+            cursorArr.push(false);
+            currTile = document.querySelector(`.tile${j}`);
+            tileArr.push(j);
+            console.log(tileArr[j]);
+        }
     }
 }
 
 
-for (let i = 0; i < tileArr.length; i++)
+for (let i = 0; i < tileArr.size; i++)
 {
-
-    Object.values(tileArr)[i].addEventListener("mouseenter", () => {
-        cursorArr[i] = true; 
-        if(Object.values(tileArr)[i].style.backgroundColor == "#FFFFFF")
-        {
-            coloredArr[i] = true;
-            console.log("if state");
-        }
-
-        let color = getComputedStyle(Object.values(tileArr)[i], "backgroundColor");
-        console.log(`black ${color}`)
-    });
-
-    Object.values(tileArr)[i].addEventListener("mouseleave", () => {
-        cursorArr[i] = false;
-
-        if (Object.values(tileArr)[i].style.backgroundColor === "#000000")
-        {
-            coloredArr[i] = false;
-        }
-        let color = getComputedStyle(Object.values(tileArr)[i], "backgroundColor");
-        console.log(`white ${color}`);
-    });
-
-    if(cursorArr[i] && coloredArr[i] && Object.values(tileArr)[i].style.backgroundColor === "#FFFFFF")
+    for (let j = 0; j < tileArr.size; j++)
     {
-        Object.values(tileArr)[i].style.backgroundColor = "black";
-    }
-
-    if(cursorArr[i] && !coloredArr[i] && Object.values(tileArr)[i].style.backgroundColor === "#000000")
-    {
-        Object.values(tileArr)[i].style.backgroundColor = "white";
+        if(rowsArr[i] == i)
+        {
+            tileArr[j].addEventListener("mouseenter", () => {
+                cursorArr[j] = true; 
+                if(tileColor == "white")
+                {
+                    coloredArr[i] = true;
+                    console.log("if state");
+                }
+                let color = getComputedStyle(tileArr[i], "backgroundColor");
+                console.log(`black ${color}`)
+            });
+        
+            tileArr[i].addEventListener("mouseleave", () => {
+                cursorArr[i] = false;
+        
+                if (tileArr[i].style.backgroundColor === "#000000")
+                {
+                    coloredArr[i] = false;
+                }
+                let color = getComputedStyle(tileArr[i], "backgroundColor");
+                console.log(`white ${color}`);
+            });
+        
+            if(cursorArr[i] && coloredArr[i] == "white")
+            {
+                tileArr[i].style.backgroundColor = "black";
+                coloredArr[i] = "black";
+            }
+        
+            if(cursorArr[i] && coloredArr[i] == "black")
+            {
+                tileArr[i].style.backgroundColor = "white";
+            }
+        }
     }
        
 }
@@ -78,12 +99,17 @@ function createGrid()
     for (let i = 0; i < grid_size; i++)
     {
         const rows = document.createElement("div");
-        rows.className = "row";
+        rows.className = `row${i}`;
+        rows.style.display = "flex";
         container.appendChild(rows);
-        for (let i = 0; i < grid_size; i++)
+        for (let j = 0; j < grid_size; j++)
         {
             const tile = document.createElement("div");
-            tile.className = "tile";
+            tile.style.backgroundColor = "white";
+            tile.style.width ="25px"
+            tile.style.height = "25px";
+            tile.style.border = "solid black";
+            tile.className = `tile${j}`;
             rows.appendChild(tile);
         }
     }

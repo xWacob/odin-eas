@@ -6,18 +6,6 @@
     margin: 0;    
 }
 
-.row{
-    display: flex;
-
-}
-
-.tile{
-    width: 25px;
-    height: 25px;
-    border: solid black;
-    background-color: white;
-}
-
 body{
     margin: 0;
 }
