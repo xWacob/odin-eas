@@ -1,7 +1,9 @@
 #squares-container{
     display: flex;
     flex-direction: column;
-    margin: 0;    
+    margin: 0;  
+    max-width: 960px;
+    max-height: 960px;  
 }
 
 body{
@@ -13,9 +15,14 @@ body{
     width: 100vw;
 }
 
-#undo-btn{
-    width: 100px;
-    height: 70px;
-    border: solid 1px black;
-    margin-top: 25px;
+.row{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.tile{
+    flex: 1;
+    flex-basis: 100%;
+    border: 1px solid black;
 }
