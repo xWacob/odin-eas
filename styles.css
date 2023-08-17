@@ -1,23 +1,21 @@
 #squares-container{
     display: flex;
     flex-direction: column;
-    height: 100vh;
-    width: 100vw;
     margin: 0;    
-}
-
-.row{
-    display: flex;
-
-}
-
-.tile{
-    width: 25px;
-    height: 25px;
-    border: solid black;
-    background-color: white;
 }
 
 body{
     margin: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content:flex-start;
+    height: 100vh;
+    width: 100vw;
+}
+
+#undo-btn{
+    width: 100px;
+    height: 70px;
+    border: solid 1px black;
+    margin-top: 25px;
 }
