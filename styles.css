@@ -1,15 +1,14 @@
 #squares-container{
     display: flex;
     flex-direction: column;
-    margin: 0;  
-    max-width: 960px;
-    max-height: 960px;  
+    margin: 10px;  
+    width: 960px;
+    height: 720px;  
 }
 
 body{
     margin: 0;
     display: flex;
-    flex-direction: column;
     justify-content:flex-start;
     height: 100vh;
     width: 100vw;
@@ -18,11 +17,21 @@ body{
 .row{
     display: flex;
     flex-direction: row;
-    flex-wrap: wrap;
 }
 
 .tile{
     flex: 1;
-    flex-basis: 100%;
+    flex-basis: auto;
     border: 1px solid black;
+}
+
+#button-container{
+    margin: 30px;
+}
+
+#eraser{
+    height: 125px;
+    width: 175px;
+    border: solid 2px black;
+    background-color: lightgray;
 }
