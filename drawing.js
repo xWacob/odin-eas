@@ -12,6 +12,7 @@ const GRID_HEIGHT = 720;
 const DEFAULT_BGCOLOR = "#FEFEFE";
 let eraserOn = false;
 let click = false;
+const docBody = document.querySelector("body");
 // ********************** Main function area ***************************
 
 document.body.onmousedown = () => {click = true;}
@@ -19,6 +20,7 @@ document.body.onmouseup = () => {click = false;}
 
 createGrid(gridSize);
 eraserButtonCreator();
+createNewGrid();
 
 // *********************************************************************
 
@@ -35,7 +37,7 @@ function createGrid(size) // this will be used in the creation of the tiles whic
         const row = document.createElement("div");
         row.classList.add("row");
         container.appendChild(row);
-        console.log("row loop");
+        // console.log("row loop");
 
         for(let j = 0; j < size; j++) // size x size grid
         {
@@ -96,4 +98,27 @@ function turnOnEraser(e)
         ersBtn.style.backgroundColor = "lightgray";
     }
     //console.log(eraserOn);
+}
+
+function createNewGrid()
+{
+    const newGridBtn = document.getElementById("grid-size");
+    newGridBtn.addEventListener("click", (e) => {
+        let temp_size = +prompt("Please enter a new grid size between 1 and 64");
+        if (temp_size < 1 && temp_size > 64)
+        {
+            temp_size = +prompt("Invalid number, please enter a new grid size between 1 and 64");
+        }
+
+        gridSize = temp_size;
+
+        const oldGrid = document.getElementById("squares-container");
+        oldGrid.remove();
+
+        const newGrid = document.createElement("div");
+        newGrid.setAttribute("id", "squares-container");
+        docBody.appendChild(newGrid);
+
+        createGrid(gridSize);
+    });
 }
