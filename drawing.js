@@ -8,11 +8,12 @@
 // **************** Global Vars ****************************************
 
 let gridSize = 20;
-const GRID_HEIGHT = 720;
+const GRID_HEIGHT = 760;
 const DEFAULT_BGCOLOR = "#FEFEFE";
+const TILE_BORDER_SIZE = 2;
 let eraserOn = false;
 let click = false;
-const docBody = document.querySelector("body");
+const mainContent = document.getElementById("main-content");
 // ********************** Main function area ***************************
 
 document.body.onmousedown = () => {click = true;}
@@ -29,7 +30,7 @@ createNewGrid();
 function createGrid(size) // this will be used in the creation of the tiles which have the listeners
 {
     const container = document.getElementById("squares-container");
-    container.style.height = `${(gridSize * 2) + GRID_HEIGHT}px`;
+    //container.style.height = `${(gridSize * 2) + GRID_HEIGHT}px`;
     let tileCounter = 0;
 
     for (let i = 0; i < size; i++)
@@ -44,7 +45,7 @@ function createGrid(size) // this will be used in the creation of the tiles whic
             const tile = document.createElement("div");
             tile.classList.add(`tile${tileCounter}`);
             tile.style.backgroundColor = DEFAULT_BGCOLOR;
-            tile.style.height = `${GRID_HEIGHT/gridSize}px`;
+            tile.style.height = `${(GRID_HEIGHT/gridSize) - TILE_BORDER_SIZE}px`;
             tile.style.flex = 1;
             tile.style.flexBasis = "auto";
             tile.style.border = "1px solid black";
@@ -120,7 +121,7 @@ function createNewGrid()
 
         const newGrid = document.createElement("div");
         newGrid.setAttribute("id", "squares-container");
-        docBody.appendChild(newGrid);
+        mainContent.appendChild(newGrid);
 
         createGrid(gridSize);
     });
