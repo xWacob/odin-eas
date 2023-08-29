@@ -104,13 +104,16 @@ function createNewGrid()
 {
     const newGridBtn = document.getElementById("grid-size");
     newGridBtn.addEventListener("click", (e) => {
-        let temp_size = +prompt("Please enter a new grid size between 1 and 64");
-        if (temp_size < 1 && temp_size > 64)
-        {
-            temp_size = +prompt("Invalid number, please enter a new grid size between 1 and 64");
-        }
+        let temp_size;
 
+        do
+        {
+            temp_size = +prompt("Please enter a number between 1 and 64");
+        } while(temp_size < 1 || temp_size > 64 || Number.isNaN(temp_size));
+
+        console.log(temp_size);
         gridSize = temp_size;
+        console.log(gridSize);
 
         const oldGrid = document.getElementById("squares-container");
         oldGrid.remove();
